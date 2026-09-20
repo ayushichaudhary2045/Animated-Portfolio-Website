@@ -16,6 +16,15 @@
     --font-script: 'Great Vibes', cursive;
 }
 
+/* Universal box-sizing safety net: prevents padding from ever pushing
+   an element wider than its container. Does not change any existing
+   spacing/appearance — it only guards against overflow bugs. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body,
 html {
     margin: 0;
@@ -25,6 +34,9 @@ html {
     overflow-x: hidden;
     font-family: var(--font-sans);
     color: var(--text-beige);
+    /* Safety net: long unbreakable strings (e.g. email addresses) wrap
+       instead of forcing horizontal overflow on narrow screens. */
+    overflow-wrap: break-word;
 }
 
 /* Canvas background animation */
@@ -82,7 +94,11 @@ h4 {
 }
 
 .hero-title {
-    font-size: 16vw;
+    /* clamp(min, preferred, max): identical to plain 16vw across normal
+       desktop/laptop widths (~1024px–1920px). Only the max (20rem) kicks
+       in on ultra-wide/4K monitors (~2000px+) so the title can't grow
+       unbounded and break the layout there. */
+    font-size: clamp(8rem, 16vw, 20rem);
     line-height: 0.85;
     color: var(--text-beige);
     opacity: 0.95;
@@ -607,66 +623,6 @@ footer {
     margin-left: 2rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-
-    .what-i-do,
-    .selected-work,
-    .process {
-        flex-direction: column;
-    }
-
-    .section-header,
-    .header-content,
-    .process-left {
-        flex: auto;
-        margin-bottom: 3rem;
-    }
-
-    .services-grid,
-    .work-grid,
-    .process-steps {
-        padding-left: 0;
-        border-left: none;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        gap: 3rem;
-    }
-}
-
-@media (max-width: 768px) {
-
-    .services-grid,
-    .work-grid,
-    .process-steps,
-    .stats {
-        flex-direction: column;
-    }
-
-    .service-card {
-        padding-left: 0;
-        border-right: none;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        padding-bottom: 2rem;
-    }
-
-    .hero-title {
-        font-size: 20vw;
-    }
-
-    header {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .hero-content {
-        flex-direction: column;
-        gap: 4rem;
-    }
-}
-
 /* New Bottom Footer (currently unused — safe to delete if you removed
    the extra footer block from index.html) */
 .new-bottom-footer {
@@ -720,10 +676,47 @@ footer {
 }
 
 /* =========================================================
-   DESKTOP-SAFE RESPONSIVE OVERRIDES
-   IMPORTANT: These rules apply ONLY at 1024px and below.
-   Everything above 1024px remains controlled by the original CSS.
+   RESPONSIVE MEDIA QUERIES
+   Organized largest → smallest. Nothing here changes colors,
+   fonts, or layout structure — only spacing/sizing/stacking
+   so the existing design adapts cleanly to every viewport.
    ========================================================= */
+
+/* Large tablets / small laptops: 1200px and below */
+@media (max-width: 1200px) {
+
+    .what-i-do,
+    .selected-work,
+    .process,
+    .section-header-row {
+        /* NOTE: .section-header-row added here — this is the actual flex
+           container for the "Selected Work" title + project cards.
+           .selected-work itself is not a flex container, so without this
+           the work cards stayed squeezed next to the heading instead of
+           stacking on tablets/mobile. This restores the same stacking
+           behavior the other two sections already had. */
+        flex-direction: column;
+    }
+
+    .section-header,
+    .header-content,
+    .process-left {
+        flex: auto;
+        margin-bottom: 3rem;
+    }
+
+    .services-grid,
+    .work-grid,
+    .process-steps {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+}
 
 /* Tablets / smaller laptops: 1024px and below */
 @media (max-width: 1024px) {
@@ -768,6 +761,8 @@ footer {
 /* Tablet / mobile: 768px and below */
 @media (max-width: 768px) {
     header {
+        flex-direction: column;
+        gap: 1rem;
         padding: 1.5rem;
         font-size: 0.7rem;
     }
@@ -1051,5 +1046,15 @@ footer {
 
     .nbf-links a {
         font-size: 0.75rem;
+    }
+}
+
+/* Extra-small phones: 400px and below (e.g. 320px–375px devices).
+   Only .hero-title is adjusted here — at 20vw, the single unbroken
+   word "PORTFOLIO" was tight enough on very narrow phones to risk
+   clipping. Everything else in the 480px block above still applies. */
+@media (max-width: 400px) {
+    .hero-title {
+        font-size: 16vw;
     }
 }
