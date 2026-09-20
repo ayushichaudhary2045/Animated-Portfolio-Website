@@ -1,314 +1,79 @@
 const canvas = document.getElementById("hero-lightpass");
 const context = canvas.getContext("2d");
 
-const frameCount = 240;
-
-const currentFrame = (index) =>
-  `frames/frame_${index.toString().padStart(6, "0")}.png`;
+const video = document.getElementById("scroll-animation-video");
 
 
 // ============================================================
-// FRAME ANIMATION
+// SCROLL VIDEO ANIMATION
 // ============================================================
 
-const images = new Array(frameCount);
-const loading = new Set();
-const loaded = new Set();
-const failed = new Set();
-
-let currentFrameIndex = 0;
-let displayedFrameIndex = 0;
-
-let canvasReady = false;
+let videoReady = false;
 let renderScheduled = false;
-
-const MAX_CONCURRENT_LOADS = 4;
-let activeLoads = 0;
-
-const LOAD_AHEAD = 8;
-const LOAD_BEHIND = 3;
-
-const retryCount = new Array(frameCount).fill(0);
-const MAX_RETRIES = 2;
+let targetTime = 0;
+let lastRenderedTime = -1;
 
 
 // ------------------------------------------------------------
-// Draw a frame
+// Prepare video
 // ------------------------------------------------------------
 
-function drawFrame(index) {
-  const image = images[index];
+video.addEventListener("loadedmetadata", () => {
+  if (!video.videoWidth || !video.videoHeight) return;
 
-  if (!image || !image.complete || image.naturalWidth === 0) {
-    return false;
-  }
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
 
-  if (!canvasReady) {
-    canvas.width = image.naturalWidth;
-    canvas.height = image.naturalHeight;
-    canvasReady = true;
-  }
+  videoReady = true;
 
-  context.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-  displayedFrameIndex = index;
-
-  return true;
-}
+  video.currentTime = 0;
+});
 
 
 // ------------------------------------------------------------
-// Load a single frame
+// Draw video frame on canvas
 // ------------------------------------------------------------
 
-function loadFrame(index) {
-  if (index < 0 || index >= frameCount) return;
-
-  if (loaded.has(index) || loading.has(index)) {
-    return;
-  }
-
-  if (failed.has(index) && retryCount[index] >= MAX_RETRIES) {
-    return;
-  }
-
-  if (activeLoads >= MAX_CONCURRENT_LOADS) {
-    return;
-  }
-
-  loading.add(index);
-  activeLoads++;
-
-  const image = new Image();
-
-  image.decoding = "async";
-
-  image.onload = async () => {
-    try {
-      // Wait until the image is decoded and ready to draw.
-      if (image.decode) {
-        try {
-          await image.decode();
-        } catch (decodeError) {
-          // The image may already be usable despite decode() rejection.
-        }
-      }
-
-      images[index] = image;
-
-      loading.delete(index);
-      loaded.add(index);
-      failed.delete(index);
-
-      activeLoads--;
-
-      // If this is the first frame, initialize the canvas.
-      if (index === 0 && !canvasReady) {
-        drawFrame(0);
-      }
-
-      // If this is the frame currently requested by scroll,
-      // render it immediately when available.
-      if (index === currentFrameIndex) {
-        scheduleRender();
-      }
-
-      processLoadQueue();
-
-    } catch (error) {
-      loading.delete(index);
-      activeLoads--;
-
-      handleLoadFailure(index);
-      processLoadQueue();
-    }
-  };
-
-  image.onerror = () => {
-    loading.delete(index);
-    activeLoads--;
-
-    handleLoadFailure(index);
-    processLoadQueue();
-  };
-
-  image.src = currentFrame(index);
-}
-
-
-// ------------------------------------------------------------
-// Handle failed frame
-// ------------------------------------------------------------
-
-function handleLoadFailure(index) {
-  retryCount[index]++;
-
-  if (retryCount[index] >= MAX_RETRIES) {
-    failed.add(index);
-
-    console.warn(
-      `Failed to load frame ${index} after ${MAX_RETRIES} attempts`
-    );
-  } else {
-    // Retry after a short delay.
-    setTimeout(() => {
-      loadFrame(index);
-    }, 500 * retryCount[index]);
-  }
-}
-
-
-// ------------------------------------------------------------
-// Loading priority queue
-// ------------------------------------------------------------
-
-const requestedFrames = new Set();
-
-function requestFrameLoad(index) {
-  if (index < 0 || index >= frameCount) return;
-
-  if (
-    loaded.has(index) ||
-    loading.has(index) ||
-    requestedFrames.has(index)
-  ) {
-    return;
-  }
-
-  requestedFrames.add(index);
-}
-
-
-// ------------------------------------------------------------
-// Process queued frame requests
-// ------------------------------------------------------------
-
-function processLoadQueue() {
-  while (activeLoads < MAX_CONCURRENT_LOADS && requestedFrames.size > 0) {
-
-    let bestIndex = null;
-    let bestDistance = Infinity;
-
-    requestedFrames.forEach((index) => {
-      const distance = Math.abs(index - currentFrameIndex);
-
-      if (distance < bestDistance) {
-        bestDistance = distance;
-        bestIndex = index;
-      }
-    });
-
-    if (bestIndex === null) break;
-
-    requestedFrames.delete(bestIndex);
-
-    loadFrame(bestIndex);
-  }
-}
-
-
-// ------------------------------------------------------------
-// Request nearby frames
-// ------------------------------------------------------------
-
-function preloadAround(index) {
-
-  // Current frame first
-  requestFrameLoad(index);
-
-  // Frames ahead
-  for (let i = 1; i <= LOAD_AHEAD; i++) {
-    requestFrameLoad(index + i);
-  }
-
-  // A few frames behind
-  for (let i = 1; i <= LOAD_BEHIND; i++) {
-    requestFrameLoad(index - i);
-  }
-
-  processLoadQueue();
-}
-
-
-// ------------------------------------------------------------
-// Find nearest already-loaded frame
-// ------------------------------------------------------------
-
-function findNearestLoadedFrame(targetIndex) {
-
-  if (loaded.has(targetIndex)) {
-    return targetIndex;
-  }
-
-  // Search nearby frames first.
-  for (let distance = 1; distance < frameCount; distance++) {
-
-    const previous = targetIndex - distance;
-
-    if (previous >= 0 && loaded.has(previous)) {
-      return previous;
-    }
-
-    const next = targetIndex + distance;
-
-    if (next < frameCount && loaded.has(next)) {
-      return next;
-    }
-  }
-
-  return null;
-}
-
-
-// ------------------------------------------------------------
-// Render requested frame
-// ------------------------------------------------------------
-
-function renderCurrentFrame() {
-
+function drawVideoFrame() {
   renderScheduled = false;
 
-  const target = currentFrameIndex;
+  if (!videoReady) return;
 
-  // If target is ready, draw it.
-  if (loaded.has(target)) {
-    drawFrame(target);
-    return;
+  if (video.readyState >= 2) {
+    context.drawImage(
+      video,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+    lastRenderedTime = video.currentTime;
   }
-
-  // Otherwise keep the last available frame.
-  const nearest = findNearestLoadedFrame(target);
-
-  if (nearest !== null) {
-    drawFrame(nearest);
-  }
-
-  // Make sure the requested frame is being loaded.
-  requestFrameLoad(target);
-
-  processLoadQueue();
 }
 
 
 // ------------------------------------------------------------
-// Schedule rendering using requestAnimationFrame
+// Draw after video seeks to requested frame
 // ------------------------------------------------------------
 
-function scheduleRender() {
+video.addEventListener("seeked", () => {
+  if (!videoReady) return;
 
-  if (renderScheduled) return;
+  if (!renderScheduled) {
+    requestAnimationFrame(() => {
+      drawVideoFrame();
+    });
+  }
+});
 
-  renderScheduled = true;
 
-  requestAnimationFrame(renderCurrentFrame);
-}
-
-
-// ============================================================
-// SCROLL HANDLING
-// ============================================================
+// ------------------------------------------------------------
+// Scroll → video time
+// ------------------------------------------------------------
 
 function updateAnimationFromScroll() {
+  if (!videoReady || !video.duration) return;
 
   const scrollTop =
     window.scrollY ||
@@ -322,21 +87,32 @@ function updateAnimationFromScroll() {
   if (maxScrollTop <= 0) return;
 
   const scrollFraction =
-    Math.max(0, Math.min(1, scrollTop / maxScrollTop));
+    Math.max(
+      0,
+      Math.min(1, scrollTop / maxScrollTop)
+    );
 
-  const frameIndex = Math.min(
-    frameCount - 1,
-    Math.floor(scrollFraction * (frameCount - 1))
-  );
+  targetTime =
+    scrollFraction * video.duration;
 
-  currentFrameIndex = frameIndex;
+  if (!renderScheduled) {
+    renderScheduled = true;
 
-  // Load target + nearby frames.
-  preloadAround(frameIndex);
+    requestAnimationFrame(() => {
+      renderScheduled = false;
 
-  // Render without doing multiple canvas updates
-  // during the same browser frame.
-  scheduleRender();
+      if (!videoReady || !video.duration) return;
+
+      // Only seek when there is an actual change.
+      if (
+        Math.abs(video.currentTime - targetTime) > 0.01
+      ) {
+        video.currentTime = targetTime;
+      } else {
+        drawVideoFrame();
+      }
+    });
+  }
 }
 
 
@@ -351,19 +127,15 @@ window.addEventListener(
 );
 
 
-// ============================================================
-// INITIAL LOAD
-// ============================================================
+// ------------------------------------------------------------
+// Initial video loading
+// ------------------------------------------------------------
 
-// Load first frame immediately.
-requestFrameLoad(0);
+video.preload = "auto";
+video.muted = true;
+video.playsInline = true;
 
-// Load first few frames after the first one.
-for (let i = 1; i <= 10; i++) {
-  requestFrameLoad(i);
-}
-
-processLoadQueue();
+video.load();
 
 
 // ============================================================
