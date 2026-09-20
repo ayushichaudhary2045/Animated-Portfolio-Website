@@ -105,6 +105,11 @@ h4 {
     text-align: center;
     margin-bottom: 2rem;
     letter-spacing: -0.02em;
+    /* This is one decorative word — it must never break onto a second
+       line, regardless of the global overflow-wrap safety rule on body. */
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: keep-all;
 }
 
 .hero-content {
@@ -729,7 +734,7 @@ footer {
     }
 
     .hero-title {
-        font-size: 17vw;
+        font-size: 11vw;
     }
 
     .hero-text h2,
@@ -773,7 +778,7 @@ footer {
     }
 
     .hero-title {
-        font-size: 19vw;
+        font-size: 11vw;
         margin-bottom: 3rem;
     }
 
@@ -926,7 +931,7 @@ footer {
     }
 
     .hero-title {
-        font-size: 20vw;
+        font-size: 11vw;
         line-height: 0.9;
     }
 
@@ -1046,15 +1051,5 @@ footer {
 
     .nbf-links a {
         font-size: 0.75rem;
-    }
-}
-
-/* Extra-small phones: 400px and below (e.g. 320px–375px devices).
-   Only .hero-title is adjusted here — at 20vw, the single unbroken
-   word "PORTFOLIO" was tight enough on very narrow phones to risk
-   clipping. Everything else in the 480px block above still applies. */
-@media (max-width: 400px) {
-    .hero-title {
-        font-size: 16vw;
     }
 }
