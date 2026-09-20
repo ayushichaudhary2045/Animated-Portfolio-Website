@@ -395,7 +395,7 @@ h4 {
     overflow: hidden;
     transition: max-height 0.4s ease, padding 0.4s ease;
     padding: 0 1rem;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(254, 253, 253, 0.3);
     font-size: 0.85rem;
     line-height: 1.6;
 }
@@ -717,4 +717,339 @@ footer {
     color: rgba(255, 255, 255, 0.5);
     margin: 0;
     margin-top: 1rem;
+}
+
+/* =========================================================
+   DESKTOP-SAFE RESPONSIVE OVERRIDES
+   IMPORTANT: These rules apply ONLY at 1024px and below.
+   Everything above 1024px remains controlled by the original CSS.
+   ========================================================= */
+
+/* Tablets / smaller laptops: 1024px and below */
+@media (max-width: 1024px) {
+    header {
+        padding: 1.5rem 2.5rem;
+    }
+
+    .hero {
+        padding: 3rem 2.5rem;
+    }
+
+    .hero-title {
+        font-size: 17vw;
+    }
+
+    .hero-text h2,
+    .section-header h2,
+    .header-content h2,
+    .process-left h2 {
+        font-size: 4rem;
+    }
+
+    .what-i-do,
+    .selected-work,
+    .process {
+        padding: 5rem 2.5rem;
+    }
+
+    .stats {
+        padding: 3rem 2.5rem;
+    }
+
+    footer {
+        padding: 5rem 2.5rem 2rem;
+    }
+
+    .badge {
+        right: -50px;
+    }
+}
+
+/* Tablet / mobile: 768px and below */
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem;
+        font-size: 0.7rem;
+    }
+
+    .hero {
+        padding: 2rem 1.5rem;
+        min-height: auto;
+    }
+
+    .hero-title {
+        font-size: 19vw;
+        margin-bottom: 3rem;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .hero-text h2 {
+        font-size: 3.2rem;
+    }
+
+    .hero-text h3 {
+        font-size: 1.2rem;
+    }
+
+    .hero-text .desc {
+        max-width: 100%;
+    }
+
+    .hero-right {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .hero-right .script-text {
+        text-align: left;
+        margin-bottom: 2rem;
+    }
+
+    .services-list {
+        text-align: left;
+    }
+
+    .badge {
+        display: none;
+    }
+
+    .what-i-do,
+    .selected-work,
+    .process {
+        padding: 4rem 1.5rem;
+    }
+
+    .section-header,
+    .header-content,
+    .process-left {
+        margin-bottom: 2.5rem;
+    }
+
+    .section-header h2,
+    .header-content h2,
+    .process-left h2 {
+        font-size: 3.5rem;
+    }
+
+    .services-grid,
+    .work-grid,
+    .process-steps,
+    .stats {
+        flex-direction: column;
+    }
+
+    .services-grid {
+        gap: 2rem;
+    }
+
+    .service-card {
+        padding: 0 0 2rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card:last-child {
+        border-bottom: none;
+    }
+
+    .work-grid {
+        gap: 2.5rem;
+    }
+
+    .work-card.noir,
+    .work-card.lune,
+    .work-card.maree {
+        padding: 1.5rem;
+    }
+
+    .stats {
+        gap: 2rem;
+        padding: 3rem 1.5rem;
+    }
+
+    .stat {
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0 0 2rem;
+    }
+
+    .stat:last-child {
+        border-bottom: none;
+    }
+
+    .stat h2 {
+        font-size: 3.2rem;
+    }
+
+    .process-steps {
+        gap: 2rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 3rem;
+        margin-bottom: 4rem;
+    }
+
+    .footer-left h2 {
+        font-size: 3rem;
+    }
+
+    .footer-left .script-text {
+        font-size: 4.5rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .socials a {
+        margin-left: 0;
+        margin-right: 1.5rem;
+    }
+
+    .nbf-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem 1.5rem;
+    }
+}
+
+/* Small mobile: 480px and below */
+@media (max-width: 480px) {
+    header {
+        padding: 1.25rem 1rem;
+    }
+
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero-title {
+        font-size: 20vw;
+        line-height: 0.9;
+    }
+
+    .hero-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text h3 {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-text .subtitle {
+        font-size: 0.8rem;
+    }
+
+    .hero-right .script-text {
+        font-size: 2.2rem;
+    }
+
+    .services-list li {
+        font-size: 0.75rem;
+    }
+
+    .what-i-do,
+    .selected-work,
+    .process {
+        padding: 3rem 1rem;
+    }
+
+    .section-header h2,
+    .header-content h2,
+    .process-left h2 {
+        font-size: 2.7rem;
+    }
+
+    .section-header .desc,
+    .header-content .desc,
+    .process-left .desc {
+        font-size: 0.82rem;
+    }
+
+    .work-grid {
+        gap: 2rem;
+    }
+
+    .work-card.noir,
+    .work-card.lune,
+    .work-card.maree {
+        padding: 1rem;
+    }
+
+    .work-info h3 {
+        font-size: 1.6rem;
+    }
+
+    .accordion-content {
+        font-size: 0.8rem;
+    }
+
+    .accordion-content.open {
+        padding: 1rem;
+    }
+
+    .stats {
+        padding: 2.5rem 1rem;
+    }
+
+    .stat h2 {
+        font-size: 2.7rem;
+    }
+
+    .stat p {
+        font-size: 0.75rem;
+    }
+
+    footer {
+        padding: 4rem 1rem 1.5rem;
+    }
+
+    .footer-left h2 {
+        font-size: 2.4rem;
+    }
+
+    .footer-left .script-text {
+        font-size: 3.5rem;
+    }
+
+    .footer-middle {
+        max-width: 100%;
+    }
+
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+    }
+
+    .footer-right li {
+        font-size: 0.8rem;
+    }
+
+    .footer-bottom {
+        font-size: 0.7rem;
+    }
+
+    .new-bottom-footer {
+        padding: 3rem 1rem;
+    }
+
+    .nbf-title {
+        font-size: 2rem;
+    }
+
+    .nbf-links {
+        gap: 0.8rem 1rem;
+    }
+
+    .nbf-links a {
+        font-size: 0.75rem;
+    }
 }
