@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayushi Chaudhary - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <canvas id="hero-lightpass"></canvas>
+
+    <main id="ui-layer">
+        <header>
+            <div class="header-left">PORTFOLIO</div>
+            <div class="header-right">BASED IN UTTAR PRADESH, INDIA</div>
+        </header>
+
+        <section class="hero">
+            <h1 class="hero-title">PORTFOLIO</h1>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="subtitle">I'M</p>
+                    <h2>AYUSHI CHAUDHARY</h2>
+                    <h3>ENGINEERING STUDENT |<br>ASPIRING FULL-STACK DEVELOPER</h3>
+                    <p class="desc">I'm learning to build full-stack<br>web applications. Currently working through
+                        JavaScript, the Fetch<br>API, and responsive design.</p>
+                </div>
+                <div class="hero-right">
+                    <p class="script-text">Code that<br>Solves Real Problems</p>
+                    <ul class="services-list">
+                        <li>✦ FRONTEND DEVELOPMENT</li>
+                        <li>✦ RESPONSIVE DESIGN</li>
+                        <li>✦ API INTEGRATION</li>
+                        <li>✦ AI-POWERED FEATURES</li>
+                    </ul>
+                    <div class="badge">
+                        <svg viewBox="0 0 100 100" width="100" height="100">
+                            <defs>
+                                <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+                            </defs>
+                            <text font-size="11" letter-spacing="2">
+                                <textPath xlink:href="#circle">
+                                    OPEN TO INTERNSHIPS • OPEN TO INTERNSHIPS •
+                                </textPath>
+                            </text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="what-i-do">
+            <div class="section-header">
+                <h2>WHAT<br>I DO</h2>
+                <p class="desc">✦<br>I'm focusing on building<br>solid fundamentals across<br>the full stack.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="img-wrapper"><img src="branding_card_1789822311675.jpg" alt="Responsive Layouts"></div>
+                    <h3>RESPONSIVE LAYOUTS</h3>
+                    <p>Flexbox and CSS Grid, mobile-first</p>
+                    <span class="number">01</span>
+                </div>
+                <div class="service-card">
+                    <div class="img-wrapper"><img src="webdesign_card_1789822332912.jpg" alt="JavaScript"></div>
+                    <h3>JAVASCRIPT</h3>
+                    <p>DOM manipulation, events, async/await</p>
+                    <span class="number">02</span>
+                </div>
+                <div class="service-card">
+                    <div class="img-wrapper"><img src="uiux_card_1789822349177.jpg" alt="APIs"></div>
+                    <h3>APIs</h3>
+                    <p>fetching and displaying live data</p>
+                    <span class="number">03</span>
+                </div>
+                <div class="service-card">
+                    <div class="img-wrapper"><img src="artdirection_card_1789822372023.jpg" alt="Version Control"></div>
+                    <h3>VERSION CONTROL</h3>
+                    <p>Git and GitHub</p>
+                    <span class="number">04</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="selected-work">
+            <div class="section-header-row">
+                <div class="header-content">
+                    <h2>SELECTED<br>WORK</h2>
+                    <p class="desc">✦<br>A curated selection of<br>personal and hackathon<br>projects.</p>
+                    <a href="https://github.com/ayushichaudhary2045" target="_blank" class="btn-outline">VIEW ALL
+                        PROJECTS →</a>
+                </div>
+                <div class="work-grid">
+                    <div class="work-item">
+                        <div class="work-card lune" onclick="toggleAccordion('zomato')">
+                            <img src="images/projects/zomato-clone.png" alt="Zomato Clone">
+                            <div class="work-info">
+                                <h3>ZOMATO CLONE</h3>
+                                <span>HTML, CSS, JAVASCRIPT</span>
+                            </div>
+                        </div>
+                        <div class="accordion-content" id="zomato">
+                            <p>A front-end clone built solo to practice responsive layout and UI replication of a real
+                                food-delivery app.</p>
+                            <a href="https://ayushichaudhary2045.github.io/zomato-clone/" target="_blank">Live demo</a>
+                            | <a href="https://github.com/ayushichaudhary2045/zomato-clone" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-card noir" onclick="toggleAccordion('sahibhaav')">
+                            <img src="images/projects/sahibhaav.png" alt="SahiBhaav">
+                            <div class="work-info">
+                                <h3>SAHIBHAAV</h3>
+                                <span>REACT, TAILWIND CSS, FASTAPI, POSTGRESQL</span>
+                            </div>
+                        </div>
+                        <div class="accordion-content" id="sahibhaav">
+                            <p>Built for Smart India Hackathon 2026 by Team Dynamic. Connects farmers directly with
+                                verified buyers using live Agmarknet mandi prices and AI-predicted pricing. My role:
+                                frontend UI and API integration.</p>
+                            <a href="https://farmer-produce-marketplace.vercel.app/" target="_blank">Live demo</a> |
+                            href="https://github.com/ayushichaudhary2045/farmer_produce_marketplace"
+                            target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-card maree" onclick="toggleAccordion('veriproxy')">
+                            <img src="images/projects/veriproxy-ai.png" alt="VeriProxy-AI">
+                            <div class="work-info">
+                                <h3>VERIPROXY-AI</h3>
+                                <span>AI, COMPUTER VISION, NEXT.JS</span>
+                            </div>
+                        </div>
+                        <div class="accordion-content" id="veriproxy">
+                            <p>An autonomous behavioral fraud guardrail for remote interviews and online testing, built
+                                solo for the Geeks2Code Hackathon (Wayzyy Track). Analyzes candidate camera feed and
+                                produces a live integrity/risk score. Built and led end-to-end independently.</p>
+                            <a href="https://veri-proxy-ai.vercel.app/" target="_blank">Live demo</a> |
+                            href="https://github.com/ayushichaudhary2045/VeriProxy-AI" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h2>LET'S BUILD<br>SOMETHING<br><span class="script-text">Together</span></h2>
+                </div>
+                <div class="footer-middle">
+                    <div class="status">CURRENTLY OPEN TO<br>INTERNSHIP<br>OPPORTUNITIES</div>
+                    <p>Reach out if you're<br>hiring interns or want<br>to collaborate on a project.</p>
+                    <img src="my-photo.jpg" alt="Ayushi Chaudhary" class="profile-pic">
+                </div>
+                <div class="footer-right">
+                    <ul>
+                        <li><a href="mailto:ayushichaudhary2045@gmail.com">ayushichaudhary2045@gmail.com</a></li>
+                        <li>Uttar Pradesh, India</li>
+                    </ul>
+                    <a href="mailto:ayushichaudhary2045@gmail.com" class="btn-outline">LET'S WORK TOGETHER →</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 AYUSHI CHAUDHARY</p>
+                <p>BUILDING THINGS FOR THE WEB.</p>
+                <div class="socials">
+                    <a href="https://github.com/ayushichaudhary2045" target="_blank">GITHUB</a>
+                    <a href="https://www.linkedin.com/in/ayushi-chaudhary-b607b73bb/" target="_blank">LINKEDIN</a>
+                    <a href="https://vercel.com/ayushichaudhary2045" target="_blank">VERCEL</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
