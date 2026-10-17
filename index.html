@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayushi Chaudhary - Portfolio</title>
+    <title>Ayushi Chaudhary | Full-Stack Developer</title>
+    <meta name="description"
+        content="Ayushi Chaudhary is an engineering student building responsive web experiences with JavaScript, React, and APIs. Open to internship opportunities.">
+    <meta name="theme-color" content="#350d12">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,6 +19,8 @@
 <body>
     <canvas id="hero-lightpass"></canvas>
 
+    <video id="scroll-animation-video" src="portfolio-scroll-animation.webm" preload="auto" muted playsinline
+        style="display: none;"></video>
 
     <main id="ui-layer">
         <header>
@@ -25,29 +30,35 @@
 
         <section class="hero">
             <h1 class="hero-title">PORTFOLIO</h1>
+
             <div class="hero-content">
                 <div class="hero-text">
                     <p class="subtitle">I'M</p>
                     <h2>AYUSHI CHAUDHARY</h2>
                     <h3>ENGINEERING STUDENT |<br>ASPIRING FULL-STACK DEVELOPER</h3>
-                    <p class="desc">I'm learning to build full-stack<br>web applications. Currently working through
-                        JavaScript, the Fetch<br>API, and responsive design.</p>
+                    <p class="desc">
+                        I build responsive interfaces and connect them to real APIs. I'm strengthening my full-stack
+                        skills through hands-on projects.
+                    </p>
                 </div>
+
                 <div class="hero-right">
                     <p class="script-text">Code that<br>Solves Real Problems</p>
+
                     <ul class="services-list">
                         <li>✦ FRONTEND DEVELOPMENT</li>
                         <li>✦ RESPONSIVE DESIGN</li>
                         <li>✦ API INTEGRATION</li>
                         <li>✦ AI-POWERED FEATURES</li>
                     </ul>
+
                     <div class="badge">
                         <svg viewBox="0 0 100 100" width="100" height="100">
                             <defs>
                                 <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
                             </defs>
                             <text font-size="11" letter-spacing="2">
-                                <textPath xlink:href="#circle">
+                                <textPath href="#circle">
                                     OPEN TO INTERNSHIPS • OPEN TO INTERNSHIPS •
                                 </textPath>
                             </text>
@@ -60,31 +71,54 @@
         <section class="what-i-do">
             <div class="section-header">
                 <h2>WHAT<br>I DO</h2>
-                <p class="desc">✦<br>I'm focusing on building<br>solid fundamentals across<br>the full stack.</p>
+                <p class="desc">
+                    ✦<br>
+                    I build responsive interfaces, integrate APIs, and keep growing my full-stack skills through
+                    practical projects.
+                </p>
             </div>
+
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="img-wrapper"><img src="branding_card_1789822311675.jpg" alt="Responsive Layouts"></div>
+                    <div class="img-wrapper">
+                        <img loading="lazy" decoding="async" src="branding_card_1789822311675.jpg"
+                            alt="Responsive Layouts">
+                    </div>
                     <h3>RESPONSIVE LAYOUTS</h3>
-                    <p>Flexbox and CSS Grid, mobile-first</p>
+                    <p>Mobile-first layout work, shown in my responsive project builds.</p>
+                    <a class="skill-proof" href="#project-zomato">See it in Zomato Clone →</a>
                     <span class="number">01</span>
                 </div>
+
                 <div class="service-card">
-                    <div class="img-wrapper"><img src="webdesign_card_1789822332912.jpg" alt="JavaScript"></div>
+                    <div class="img-wrapper">
+                        <img loading="lazy" decoding="async" src="webdesign_card_1789822332912.jpg" alt="JavaScript">
+                    </div>
                     <h3>JAVASCRIPT</h3>
-                    <p>DOM manipulation, events, async/await</p>
+                    <p>Interactive interfaces and asynchronous JavaScript in hands-on projects.</p>
+                    <a class="skill-proof" href="#project-zomato">See it in Zomato Clone →</a>
                     <span class="number">02</span>
                 </div>
+
                 <div class="service-card">
-                    <div class="img-wrapper"><img src="uiux_card_1789822349177.jpg" alt="APIs"></div>
+                    <div class="img-wrapper">
+                        <img loading="lazy" decoding="async" src="uiux_card_1789822349177.jpg" alt="APIs">
+                    </div>
                     <h3>APIs</h3>
-                    <p>fetching and displaying live data</p>
+                    <p>Fetching and displaying live market data in SahiBhaav.</p>
+                    <a class="skill-proof" href="#project-sahibhaav">See it in SahiBhaav →</a>
                     <span class="number">03</span>
                 </div>
+
                 <div class="service-card">
-                    <div class="img-wrapper"><img src="artdirection_card_1789822372023.jpg" alt="Version Control"></div>
+                    <div class="img-wrapper">
+                        <img loading="lazy" decoding="async" src="artdirection_card_1789822372023.jpg"
+                            alt="Version Control">
+                    </div>
                     <h3>VERSION CONTROL</h3>
-                    <p>Git and GitHub</p>
+                    <p>Version control used across solo and team projects.</p>
+                    <a class="skill-proof" href="https://github.com/ayushichaudhary2045/VeriProxy-AI" target="_blank"
+                        rel="noopener noreferrer">See a project repository →</a>
                     <span class="number">04</span>
                 </div>
             </div>
@@ -95,59 +129,170 @@
                 <div class="header-content">
                     <h2>SELECTED<br>WORK</h2>
                     <p class="desc">✦<br>A curated selection of<br>personal and hackathon<br>projects.</p>
-                    <a href="https://github.com/ayushichaudhary2045" target="_blank" class="btn-outline">VIEW ALL
-                        PROJECTS →</a>
+                    <a href="https://github.com/ayushichaudhary2045" target="_blank" rel="noopener noreferrer"
+                        class="btn-outline">VIEW ALL PROJECTS →</a>
                 </div>
+
                 <div class="work-grid">
-                    <div class="work-item">
-                        <div class="work-card lune" onclick="toggleAccordion('zomato')">
-                            <img src="images/projects/zomato-clone.png" alt="Zomato Clone">
+                    <div class="work-item" id="project-zomato">
+                        <button type="button" class="work-card lune" aria-controls="zomato" aria-expanded="false"
+                            onclick="toggleAccordion('zomato'); this.setAttribute('aria-expanded', document.getElementById('zomato').classList.contains('open'))">
+                            <img loading="lazy" decoding="async" src="images/projects/zomato-clone.png"
+                                alt="Zomato Clone">
                             <div class="work-info">
                                 <h3>ZOMATO CLONE</h3>
                                 <span>HTML, CSS, JAVASCRIPT</span>
+                                <span class="project-context">SOLO BUILD · FRONT-END PROJECT</span>
                             </div>
-                        </div>
+                        </button>
+
                         <div class="accordion-content" id="zomato">
-                            <p>A front-end clone built solo to practice responsive layout and UI replication of a real
-                                food-delivery app.</p>
-                            <a href="https://ayushichaudhary2045.github.io/zomato-clone/" target="_blank">Live demo</a>
-                            | <a href="https://github.com/ayushichaudhary2045/zomato-clone" target="_blank">GitHub</a>
+                            <p>
+                                Solo front-end project focused on responsive layout and faithful UI implementation for
+                                a food-delivery experience.
+                            </p>
+                            <a href="https://ayushichaudhary2045.github.io/zomato-clone/" target="_blank"
+                                rel="noopener noreferrer">Live demo</a>
+                            |
+                            <a href="https://github.com/ayushichaudhary2045/zomato-clone" target="_blank"
+                                rel="noopener noreferrer">GitHub</a>
                         </div>
                     </div>
-                    <div class="work-item">
-                        <div class="work-card noir" onclick="toggleAccordion('sahibhaav')">
-                            <img src="images/projects/sahibhaav.png" alt="SahiBhaav">
+
+                    <div class="work-item" id="project-sahibhaav">
+                        <button type="button" class="work-card noir" aria-controls="sahibhaav" aria-expanded="false"
+                            onclick="toggleAccordion('sahibhaav'); this.setAttribute('aria-expanded', document.getElementById('sahibhaav').classList.contains('open'))">
+                            <img loading="lazy" decoding="async" src="images/projects/sahibhaav.png" alt="SahiBhaav">
                             <div class="work-info">
                                 <h3>SAHIBHAAV</h3>
                                 <span>REACT, TAILWIND CSS, FASTAPI, POSTGRESQL</span>
+                                <span class="project-context">
+                                    TEAM DYNAMIC · SMART INDIA HACKATHON 2026 · FRONTEND + API INTEGRATION
+                                </span>
                             </div>
-                        </div>
+                        </button>
+
                         <div class="accordion-content" id="sahibhaav">
-                            <p>Built for Smart India Hackathon 2026 by Team Dynamic. Connects farmers directly with
+                            <p>
+                                Built for Smart India Hackathon 2026 by Team Dynamic. Connects farmers directly with
                                 verified buyers using live Agmarknet mandi prices and AI-predicted pricing. My role:
-                                frontend UI and API integration.</p>
-                            <a href="https://farmer-produce-marketplace.vercel.app/" target="_blank">Live demo</a> |
-                            <a href="https://github.com/ayushichaudhary2045/farmer_produce_marketplace"
-                                target="_blank">GitHub</a>
+                                frontend UI and API integration.
+                            </p>
+                            <a href="https://farmer-produce-marketplace.vercel.app/" target="_blank"
+                                rel="noopener noreferrer">Live demo</a>
+                            |
+                            <a href="https://github.com/ayushichaudhary2045/farmer_produce_marketplace" target="_blank"
+                                rel="noopener noreferrer">GitHub</a>
                         </div>
                     </div>
-                    <div class="work-item">
-                        <div class="work-card maree" onclick="toggleAccordion('veriproxy')">
-                            <img src="images/projects/veriproxy-ai.png" alt="VeriProxy-AI">
+
+                    <div class="work-item" id="project-veriproxy">
+                        <button type="button" class="work-card maree" aria-controls="veriproxy" aria-expanded="false"
+                            onclick="toggleAccordion('veriproxy'); this.setAttribute('aria-expanded', document.getElementById('veriproxy').classList.contains('open'))">
+                            <img loading="lazy" decoding="async" src="images/projects/veriproxy-ai.png"
+                                alt="VeriProxy-AI">
                             <div class="work-info">
                                 <h3>VERIPROXY-AI</h3>
                                 <span>AI, COMPUTER VISION, NEXT.JS</span>
+                                <span class="project-context">SOLO BUILD · GEEKS2CODE HACKATHON · WAYZYY TRACK</span>
                             </div>
-                        </div>
+                        </button>
+
                         <div class="accordion-content" id="veriproxy">
-                            <p>An autonomous behavioral fraud guardrail for remote interviews and online testing, built
+                            <p>
+                                An autonomous behavioral fraud guardrail for remote interviews and online testing, built
                                 solo for the Geeks2Code Hackathon (Wayzyy Track). Analyzes candidate camera feed and
-                                produces a live integrity/risk score. Built and led end-to-end independently.</p>
-                            <a href="https://veri-proxy-ai.vercel.app/" target="_blank">Live demo</a> |
-                            <a href="https://github.com/ayushichaudhary2045/VeriProxy-AI" target="_blank">GitHub</a>
+                                produces a live integrity/risk score. Built and led end-to-end independently.
+                            </p>
+                            <a href="https://veri-proxy-ai.vercel.app/" target="_blank" rel="noopener noreferrer">Live
+                                demo</a>
+                            |
+                            <a href="https://github.com/ayushichaudhary2045/VeriProxy-AI" target="_blank"
+                                rel="noopener noreferrer">GitHub</a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="certifications what-i-do" id="certifications" aria-labelledby="certifications-title">
+            <div class="section-header">
+                <h2 id="certifications-title">CERTIFICATIONS</h2>
+                <p class="desc">
+                    Certificates and participation recognition earned through TCS iON and Geeks2Code.
+                </p>
+            </div>
+
+            <div class="certifications-grid">
+                <article class="certification-card">
+                    <h3>Communication Skills</h3>
+                    <p class="certification-issuer">TCS iON · Tata Consultancy Services</p>
+                    <a href="certificates/communication-skills.pdf" target="_blank" rel="noopener noreferrer">View
+                        Certificate <span aria-hidden="true">↗</span></a>
+                </article>
+
+                <article class="certification-card">
+                    <h3>Interview Skills</h3>
+                    <p class="certification-issuer">TCS iON · Tata Consultancy Services</p>
+                    <a href="certificates/interview-skills.pdf" target="_blank" rel="noopener noreferrer">View
+                        Certificate <span aria-hidden="true">↗</span></a>
+                </article>
+
+                <article class="certification-card">
+                    <h3>Telephone Etiquette</h3>
+                    <p class="certification-issuer">TCS iON · Tata Consultancy Services</p>
+                    <a href="certificates/telephone-etiquette.pdf" target="_blank" rel="noopener noreferrer">View
+                        Certificate <span aria-hidden="true">↗</span></a>
+                </article>
+
+                <article class="certification-card">
+                    <h3>Group Discussion</h3>
+                    <p class="certification-issuer">TCS iON · Tata Consultancy Services</p>
+                    <a href="certificates/group-discussion.pdf" target="_blank" rel="noopener noreferrer">View
+                        Certificate <span aria-hidden="true">↗</span></a>
+                </article>
+
+                <article class="certification-card">
+                    <h3>Business Etiquette</h3>
+                    <p class="certification-issuer">TCS iON · Tata Consultancy Services</p>
+                    <a href="certificates/business-etiquette.pdf" target="_blank" rel="noopener noreferrer">View
+                        Certificate <span aria-hidden="true">↗</span></a>
+                </article>
+
+                <article class="certification-card">
+                    <h3>Write Effective Resume and Cover Letter</h3>
+                    <p class="certification-issuer">TCS iON · Tata Consultancy Services</p>
+                    <a href="certificates/resume-and-cover-letter.pdf" target="_blank" rel="noopener noreferrer">View
+                        Certificate <span aria-hidden="true">↗</span></a>
+                </article>
+
+                <article class="certification-card">
+                    <h3>Introduction to Soft Skills</h3>
+                    <p class="certification-issuer">TCS iON · Tata Consultancy Services</p>
+                    <a href="certificates/introduction-to-soft-skills.pdf" target="_blank"
+                        rel="noopener noreferrer">View Certificate <span aria-hidden="true">↗</span></a>
+                </article>
+
+                <article class="certification-card">
+                    <h3>Email Etiquette</h3>
+                    <p class="certification-issuer">TCS iON · Tata Consultancy Services</p>
+                    <a href="certificates/email-etiquette.pdf" target="_blank" rel="noopener noreferrer">View
+                        Certificate <span aria-hidden="true">↗</span></a>
+                </article>
+
+                <article class="certification-card">
+                    <h3>Presentation Skills</h3>
+                    <p class="certification-issuer">TCS iON · Tata Consultancy Services</p>
+                    <a href="certificates/presentation-skills.pdf" target="_blank" rel="noopener noreferrer">View
+                        Certificate <span aria-hidden="true">↗</span></a>
+                </article>
+
+                <article class="certification-card">
+                    <h3>Geeks2Code Hackathon - Participation Certificate</h3>
+                    <p class="certification-issuer">Geeks2Code Hackathon · GFG Campus Body, MIET Meerut</p>
+                    <a href="certificates/geeks2code-hackathon.pdf" target="_blank" rel="noopener noreferrer">View
+                        Certificate <span aria-hidden="true">↗</span></a>
+                </article>
             </div>
         </section>
 
@@ -156,26 +301,48 @@
                 <div class="footer-left">
                     <h2>LET'S BUILD<br>SOMETHING<br><span class="script-text">Together</span></h2>
                 </div>
+
                 <div class="footer-middle">
                     <div class="status">CURRENTLY OPEN TO<br>INTERNSHIP<br>OPPORTUNITIES</div>
                     <p>Reach out if you're<br>hiring interns or want<br>to collaborate on a project.</p>
-                    <img src="my-photo.jpg" alt="Ayushi Chaudhary" class="profile-pic">
+                    <img loading="lazy" decoding="async" src="my-photo.jpg" alt="Ayushi Chaudhary" class="profile-pic">
                 </div>
+
                 <div class="footer-right">
                     <ul>
-                        <li><a href="mailto:ayushichaudhary2045@gmail.com">ayushichaudhary2045@gmail.com</a></li>
+                        <li>
+                            <a href="mailto:ayushichaudhary2045@gmail.com">
+                                ayushichaudhary2045@gmail.com
+                            </a>
+                        </li>
                         <li>Uttar Pradesh, India</li>
+                        <li>
+                            <a href="resume.pdf" download="Ayushi_Chaudhary_Resume.pdf" type="application/pdf">
+                                DOWNLOAD RÉSUMÉ ↓
+                            </a>
+                        </li>
                     </ul>
-                    <a href="mailto:ayushichaudhary2045@gmail.com" class="btn-outline">LET'S WORK TOGETHER →</a>
+                    <a href="mailto:ayushichaudhary2045@gmail.com" class="btn-outline">
+                        LET'S WORK TOGETHER →
+                    </a>
+                    <a href="https://wa.me/qr/632NCP5LZF3UC1" class="btn-outline" target="_blank"
+                        rel="noopener noreferrer">
+                        CHAT ON WHATSAPP →
+                    </a>
+
                 </div>
             </div>
+
             <div class="footer-bottom">
                 <p>© 2026 AYUSHI CHAUDHARY</p>
                 <p>BUILDING THINGS FOR THE WEB.</p>
                 <div class="socials">
-                    <a href="https://github.com/ayushichaudhary2045" target="_blank">GITHUB</a>
-                    <a href="https://www.linkedin.com/in/ayushi-chaudhary-b607b73bb/" target="_blank">LINKEDIN</a>
-                    <a href="https://vercel.com/ayushichaudhary2045" target="_blank">VERCEL</a>
+                    <a href="https://github.com/ayushichaudhary2045" target="_blank"
+                        rel="noopener noreferrer">GITHUB</a>
+                    <a href="https://www.linkedin.com/in/ayushi-chaudhary-b607b73bb/" target="_blank"
+                        rel="noopener noreferrer">LINKEDIN</a>
+                    <a href="https://vercel.com/ayushichaudhary2045" target="_blank"
+                        rel="noopener noreferrer">VERCEL</a>
                 </div>
             </div>
         </footer>

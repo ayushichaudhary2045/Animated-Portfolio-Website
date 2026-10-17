@@ -1,5 +1,5 @@
 :root {
-    --bg-beige: rgba(234, 221, 213, 0.4);
+    --bg-beige: rgba(234, 221, 213, 0.24);
     /* Glassmorphic Beige, more transparent */
     --bg-dark: rgba(17, 17, 17, 0.4);
     /* Glassmorphic Dark, more transparent */
@@ -284,8 +284,8 @@ h4 {
 .selected-work {
     background-color: var(--bg-dark);
     padding: 6rem 4rem;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
@@ -1052,4 +1052,193 @@ footer {
     .nbf-links a {
         font-size: 0.75rem;
     }
+}
+
+/* Accessibility and readability refinements */
+:focus-visible {
+    outline: 3px solid var(--text-gold);
+    outline-offset: 4px;
+}
+
+.hero-text h2,
+.hero-title {
+    color: #350d12;
+    text-shadow: 0 1px 10px rgba(255, 255, 255, 0.72);
+}
+
+.hero-text h3,
+.hero-text .desc,
+.services-list li,
+header {
+    color: rgba(17, 17, 17, 0.88);
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.78);
+}
+
+.work-card {
+    appearance: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+}
+
+.work-card:focus-visible {
+    outline-color: var(--text-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.project-context {
+    display: block;
+    margin-top: 0.65rem;
+    font-size: 0.68rem;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+    opacity: 0.72;
+}
+
+.footer-right a[href="resume.pdf"] {
+    display: inline-block;
+    padding-top: 0.25rem;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.skill-proof {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    color: #350d12;
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+.skill-proof:hover {
+    color: #7a2934;
+}
+
+.work-item[id] {
+    scroll-margin-top: 2rem;
+}
+
+/* Certifications section */
+.certifications-grid {
+    display: grid;
+    flex: 1;
+    min-width: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    align-content: start;
+}
+
+.certification-card {
+    min-width: 0;
+    min-height: 180px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(53, 13, 18, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.certification-card h3 {
+    margin: 0 0 0.75rem;
+    color: var(--text-red);
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.certification-issuer {
+    margin: 0 0 1.25rem;
+    color: rgba(17, 17, 17, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.certification-card a {
+    margin-top: auto;
+    color: var(--text-red);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-underline-offset: 0.2em;
+}
+
+.certification-card a:hover {
+    color: #7a2934;
+}
+
+@media (max-width: 1200px) {
+    .certifications-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certification-card {
+        min-height: 0;
+    }
+}
+
+/* Keep hero typography crisp without the previous glow effect */
+.hero-title,
+.hero-text h2,
+.hero-text h3,
+.hero-text .subtitle,
+.hero-text .desc,
+.hero-right .script-text,
+.services-list li {
+    text-shadow: none;
+}
+
+/* Restore the original light hero text colors without glow/highlighting */
+.hero-title,
+.hero-text h2,
+.hero-text .subtitle {
+    color: var(--text-beige);
+    text-shadow: none !important;
+    filter: none !important;
+}
+
+.hero-text h3,
+.hero-text .desc,
+.hero-right .script-text,
+.services-list li,
+header {
+    text-shadow: none !important;
+    filter: none !important;
+}
+
+.hero-text h3 {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-text .desc,
+.services-list li {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+header {
+    color: rgba(255, 255, 255, 0.75);
 }
